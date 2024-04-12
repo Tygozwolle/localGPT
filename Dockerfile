@@ -10,7 +10,7 @@ COPY ./requirements.txt .
 # use BuildKit cache mount to drastically reduce redownloading from pip on repeated builds
 #RUN --mount=type=cache,target=/root/.cache CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install --timeout 100 -r requirements.txt llama-cpp-python==0.1.83
 RUN --mount=type=cache,target=/root/.cache pip install --timeout 100 -r requirements.txt
-RUN pip install https://huggingface.co/r4ziel/xformers_pre_built/resolve/main/triton-2.0.0-cp310-cp310-win_amd64.whl
+#RUN pip install https://huggingface.co/r4ziel/xformers_pre_built/resolve/main/triton-2.0.0-cp310-cp310-win_amd64.whl
 RUN --mount=type=cache,target=/root/.cache CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install "llama-cpp-python>=0.2.6,<0.3" --force-reinstall --upgrade
 COPY SOURCE_DOCUMENTS ./SOURCE_DOCUMENTS
 COPY utils.py .
