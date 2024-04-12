@@ -31,3 +31,4 @@ Streamlit-extras
 
 # Excel File Manipulation
 openpyxl
+llama-cpp-python
