@@ -21,7 +21,11 @@ COPY localGPTUI/templates/ ./localGPTUI/templates/
 #RUN ls --recursive ./localGPTUI/
 COPY utils.py .
 COPY ingest.py constants.py ./
-
+#RUN pip install -y Pytorch==2.2.1
+RUN pip uninstall auto-gptq -y
+RUN pip install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 --index-url https://download.pytorch.org/whl/cu118 --force-reinstall
+#+cu118
+RUN pip install auto-gptq --no-build-isolation --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu118/ --force-reinstall
 # Docker BuildKit does not support GPU during *docker build* time right now, only during *docker run*.
 # See <https://github.com/moby/buildkit/issues/1436>.
 # If this changes in the future you can `docker build --build-arg device_type=cuda  . -t localgpt` (+GPU argument to be determined).
