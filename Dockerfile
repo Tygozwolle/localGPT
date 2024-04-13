@@ -2,7 +2,7 @@
 # Build as `docker build . -t localgpt`, requires BuildKit.
 # Run as `docker run -it --mount src="$HOME/.cache",target=/root/.cache,type=bind --gpus=all localgpt`, requires Nvidia container toolkit.
 
-FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04
+FROM nvidia/cuda:11.8.0-runtime-ubuntu22.04
 EXPOSE 5110/tcp
 EXPOSE 5111/tcp
 RUN apt-get update && apt-get install -y software-properties-common && apt-get install ffmpeg libsm6 libxext6  -y
